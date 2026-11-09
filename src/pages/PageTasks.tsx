@@ -15,7 +15,7 @@ function TasksPage() {
       <h1>Tasks</h1>
 
       <Link to="/tasks/new"> 
-        <button>Create Task</button>
+        <button className="create-task-btn">Create Task</button>
       </Link>
       
       <SelectDropdown

@@ -92,7 +92,7 @@ const TaskForm = ({addTask}: TaskFormProps) => {
         />
       </label>
 
-      <button type="submit">Add Task</button>
+      <button className="task-form-btn" type="submit">Add Task</button>
     </form>
   )
 }

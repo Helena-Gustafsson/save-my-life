@@ -20,9 +20,10 @@ const TaskItem = ({ task, deleteTask, editTask }: TaskItemProps) => {
     <li className="task">
       <p className="task-title">{task.title}</p>
       <p className="task-meta">
-        <span className="tag">{capitalize(task.category)}</span>
+        <span className={`tag category-${task.category.toLowerCase().trim()}`}>{capitalize(task.category)}</span>
         <span className="task-date">{formatDate(task.date || "" )}</span>
       </p>
+      <p className="task-notes-preview">{task.notes}</p>
 
       <section className="actions">
         <button className="edit-button" onClick={() => editTask(task)}>Edit</button>

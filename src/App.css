@@ -1,195 +1,206 @@
 /***********************************/
-/* LAYOUT FOR ALL MAIN CONTAINERS */
+/*       BASE STYLES & RESET       */
 /***********************************/
 
-header,
-aside,
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #fafaf9;
+  color: #1c1917;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, serif;
+}
+
 main,
-footer {
-  border: 1px solid black;
-  margin: 0.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  gap: 0.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-.basic-layout {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-   max-width: 1000px;
-  margin: 0 auto;
-}
-
 header,
 footer {
-  min-height: 75px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px;
 }
 
-.side-main {
+nav {
+  margin-bottom: 16px;
+}
+
+a {
+  color: #3c059b;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+/***********************************/
+/*      FORM & BUTTON STYLES       */
+/***********************************/
+
+label {
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  min-height: 400px;
+  gap: 4px;
+  font-size: 0.9rem;
 }
 
-/***********************************/
-/* STYLING FOR ALL MAIN CONTAINERS */
-/***********************************/
-
-
-aside {
- background: linear-gradient(135deg, #ffffff, #4f0deb);
-}
-
-main {
-   background: linear-gradient(135deg, #4f0deb, #ffffff);
-   color: white;
-}
-
-/***********************************/
-/* STYLING FOR NAVIGATION */
-/***********************************/
-
-/* Header navigation */
-
-nav.header ul {
-  display: flex;
-  gap: 1rem;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav.header li a{
-  color: #b4caf1;
-}
-nav.sidebar {
-  padding-top: 1.5rem;
-}
-
-/* Sidebar navigation */
-
-nav.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-
-nav.sidebar li {
-  margin-bottom: 0.5rem;
-}
-
-
-nav.sidebar li a {
-  color: #031e4d;
-  
-}
-
-
-/*********************/
-/* EXRCISE 4 - CSS
-/*********************/
-
-
-.pun-content,
-.pun-meta,
-.pun-date {
-  color: black;
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d6d3d1;
+  background: white;
+  color: inherit;
 }
 
 textarea {
-  display: block;
-  width: 100%;
-  height: 80px;
-  padding: 6px;
-  border-radius: 6px;
-  border: 2px solid rgb(17, 238, 238);
-  margin-top: 10px;
-}
-
-
-/*********************/
-/* EXRCISE 3 - CSS
-/*********************/
-
-body {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 12px;
-  align-items: flex-start;
-}
-
-h1, h2, h3, p, button, ul, label, select, input {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-ul, select, input {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr auto;
-  align-items: center;
-  padding: 6px 0;
-  padding-left: 6px;
-  gap: 12px;
-  border: 2px solid rgb(17, 238, 238);
-  border-radius: 6px;
-  margin-bottom: 6px;
-  background: linear-gradient(135deg, #8ceef1, #d7cef0);
-}
-
-input, select {
-  padding: 6px;
-  border-radius: 6px;
-  border: 2px solid rgb(17, 238, 238);
-}
-
-.checkbox {
-  margin-right: 6px;
+  resize: vertical;
+  min-height: 80px;
 }
 
 button {
-  background: rgb(154, 183, 247);
-  border: 2px solid blue;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  border-radius: 6px;
   cursor: pointer;
-  font-size: small;
-  transition: all 0.3s ease;
-  width: 80px;
 }
 
-.delete-button {
-  background: rgb(250, 188, 188);
-  border: 2px solid rgb(255, 0, 0);
+button.create-task-btn {
+  border-color:#0b0d7e;
 }
 
-.submit-button {
-  background:linear-gradient(135deg, #8ceef1, #fefeff);
-  border: 2px solid rgb(17, 238, 238);
-  font-weight: bold;
-  font-size: small;
+button.edit-button {
+  border-color: #6fee9c;
+  color: #166534;
 }
 
-.add-contact-container {
+button.delete-button {
+  border-color: #f3a0a0;
+  color: #991b1b;
+}
+
+button.task-form-btn {
+  margin-top: 8px;
+  width: fit-content;
+}
+
+/***********************************/
+/*        TASK LIST VIEWS          */
+/***********************************/
+
+.tasks {
+  padding: 0;
+  list-style: none;
+}
+
+.task {
+  background: white;
+  border: 1px solid #e7e5e4;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+}
+
+.task-meta {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.task-notes-preview {
+  margin: 8px 0 0 4px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
   margin-top: 12px;
 }
 
-span.contact-name {
-  font-weight: bold;
+/***********************************/
+/*       TASK FORM STRUCTURE       */
+/***********************************/
+
+#task-form {
+  display: grid;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e7e5e4;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
 }
 
+/***********************************/
+/*    CATEGORIES & COLOR TAGS      */
+/***********************************/
+
+.tag {
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.tag.category-school {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.tag.category-lia {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.tag.category-career {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.tag.category-emilia {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.tag.category-samiya {
+  background: #efc6f5;
+  color: #44045e;
+}
+
+.tag.category-cats {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.tag.category-home {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.tag.category-personal {
+  background: #f5d2ef;
+  color: #3d082d;
+}
+
+.tag.category-family {
+  background: #fef3c7;
+  color: #78350f;
+}
+
+.tag.category-dentist {
+  background: #c9f7f8;
+  color: #080961;
+}
