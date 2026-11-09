@@ -1,75 +1,67 @@
-# React + TypeScript + Vite
+# Save My Life
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+Save My Life is a personal organizing app built with React and TypeScript. Instead of a game backlog, this app helps me organize my daily life with categories like School, LIA, Career, and Personal tasks. The app connects to an external API (Shelf API) to fetch, create, update, and delete tasks.
 
-Currently, two official plugins are available:
+## Tech Stack
+* **React** (Component structure and logic)
+* **TypeScript** (Type safety for the code)
+* **React Router** (Navigation between pages)
+* **Vite** (Build tool)
+* **Custom Hooks** (To separate fetch logic from components)
+* **LocalStorage** (To save the filter state)
+* **Shelf API** (The database backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+* **Create tasks** (POST request with form validation)
+* **View all tasks** (GET request on the main page)
+* **View task details** (GET ONE request for a specific task page)
+* **Edit tasks** (PATCH request to update information)
+* **Delete tasks** (DELETE request to remove a task)
+* **Filter tasks** (Filter the list by category, status, and priority)
+* **Save filters** (Filters stay active even if you reload the page)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## My Custom Hooks (VG Requirement)
+To keep the code clean and structured, I have moved the API calls and fetch logic away from the page components into dedicated custom hooks. 
 
-## Expanding the ESLint configuration
+* `useTasks`: Fetches all items from the API and handles the sorting and filtering logic for the list.
+* `useTask`: Fetches data for one specific task based on its ID to show it on the details page.
+* `useSaveTasks`: Collects the functions to add, edit, and delete tasks (`addTask`, `editTask`, `deleteTask`).
+* `useLocalStorage`: A custom hook that saves the selected filters in the browser memory.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Why this structure?**
+By separating the fetch logic from the visual components, the code becomes much easier to read, fix, and update. The components can focus on showing the UI, while the hooks handle the data.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Development Status
+* ✅ **Task List** (Done and working with filters)
+* ✅ **Task Details** (Done and showing full task details)
+* ✅ **Create Task** (Done with form validation)
+* 🔄 **Edit Task (PATCH)** (In progress)
+* 🔄 **LocalStorage Filters** (Planned)
+* 🔄 **Deployment & README** (Planned)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## How to run the project locally
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+### Installation
+1. Clone the repository from GitHub:
+   ```bash
+   git clone https://github.com
+   ```
+2. Go into the project folder:
+   ```bash
+   cd Save-My-Life
+   ```
+3. Install all dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the local server to view the app:
+   ```bash
+   npm run dev
+   ```
