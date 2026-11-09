@@ -22,7 +22,7 @@ h3 {
 main,
 header,
 footer {
-  max-width: 720px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 8px;
 }
@@ -40,7 +40,7 @@ h1 {
 }
 
 /***********************************/
-/*      FORM & BUTTON STYLES       */
+/*      FORM & FILTER STYLES       */
 /***********************************/
 
 label {
@@ -61,10 +61,34 @@ button {
   color: inherit;
 }
 
+/* ===== Filter Container (Mobile) ===== */
+.filter-container {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* ===== Filter Container (Desktop) ===== */
+@media (min-width: 480px) {
+  .filter-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .filter-container select {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
 textarea {
   resize: vertical;
   min-height: 80px;
 }
+
+/***********************************/
+/*      BUTTON STYLES       */
+/***********************************/
 
 button {
   cursor: pointer;
@@ -72,6 +96,7 @@ button {
 
 button.create-task-btn {
   border-color:#0b0d7e;
+  color: #040679;
 }
 
 button.edit-button {
@@ -109,6 +134,10 @@ button.task-form-btn {
 .task-title {
   font-size: 1.1rem;
   margin: 0 0 8px;
+}
+
+.task-title a {
+  text-decoration: none;
 }
 
 .task-meta {

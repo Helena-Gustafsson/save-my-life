@@ -8,6 +8,7 @@
 
 import type { Task } from "../types/taskTypes"
 import { capitalize, formatDate } from "../types/Format"
+import { Link } from "react-router"
 
 type TaskItemProps = {
   task: Task
@@ -18,7 +19,7 @@ type TaskItemProps = {
 const TaskItem = ({ task, deleteTask, editTask }: TaskItemProps) => {
   return (
     <li className="task">
-      <p className="task-title">{task.title}</p>
+      <p className="task-title"><Link to={`/tasks/${task.id}`}><strong>{task.title}</strong></Link></p>
       <p className="task-meta">
         <span className={`tag category-${task.category.toLowerCase().trim()}`}>{capitalize(task.category)}</span>
         <span className="task-date">{formatDate(task.date || "" )}</span>

@@ -17,31 +17,32 @@ function TasksPage() {
       <Link to="/tasks/new"> 
         <button className="create-task-btn">Create Task</button>
       </Link>
-      
+      <div className="filter-container">
+        <SelectDropdown
+        label="Filter by category:"
+        options={categories} 
+        selectedValue={category} 
+        onChange={setCategory} 
+        defaultOptions="All categories"
+        htmlId="category-dropdown"
+      />
       <SelectDropdown
-      label="Filter by category:"
-      options={categories} 
-      selectedValue={category} 
-      onChange={setCategory} 
-      defaultOptions="All categories"
-      htmlId="category-dropdown"
-    />
-    <SelectDropdown
-      label="Filter by status:"
-      options={statuses}
-      selectedValue={status}
-      onChange={setStatus}
-      defaultOptions="All statuses"
-      htmlId="status-dropdown"
-    />
-    <SelectDropdown
-      label="Filter by priority:"
-      options={priorities}
-      selectedValue={priority}
-      onChange={setPriority}
-      defaultOptions="All priorities"
-      htmlId="priority-dropdown"
-    />
+        label="Filter by status:"
+        options={statuses}
+        selectedValue={status}
+        onChange={setStatus}
+        defaultOptions="All statuses"
+        htmlId="status-dropdown"
+      />
+      <SelectDropdown
+        label="Filter by priority:"
+        options={priorities}
+        selectedValue={priority}
+        onChange={setPriority}
+        defaultOptions="All priorities"
+        htmlId="priority-dropdown"
+      />
+    </div>
 
     <TaskList 
       category={category} status={status} priority={priority} 
