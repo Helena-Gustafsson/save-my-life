@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Task } from "../types/taskTypes";
+import { PRIORITIES } from "../data/taskOptions";
 
 // ==========================================
 // HOOK 1: Fetch all tasks (useTasks)
@@ -34,10 +35,8 @@ export const useTasks = (
             const matchesStatusFilter =
               !status || status === "All statuses" || task.status === status;
 
-            let selectedPriorityNumber = 0;
-            if (priority === "Low") selectedPriorityNumber = 1;
-            if (priority === "Medium") selectedPriorityNumber = 2;
-            if (priority === "High") selectedPriorityNumber = 3;
+            const selectedPriorityNumber =
+              PRIORITIES[priority as keyof typeof PRIORITIES] || 0;
 
             const matchesPriorityFilter =
               !priority ||

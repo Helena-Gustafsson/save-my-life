@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Task, TaskFormData } from "../types/taskTypes";
+import { PRIORITIES } from "../data/taskOptions";
 
 //Note that rating is priority in the form and changed to a string, but rating in the database is a number.
 
@@ -18,9 +19,7 @@ const useSaveTasks = () => {
     setError(""); // Reset previous errors before initiating a new request
     setMessage(""); // Reset previous messages before initiating a new request
 
-    let ratingNumber = 1; // Default is Low
-    if (rating === "Medium") ratingNumber = 2;
-    if (rating === "High") ratingNumber = 3;
+    const ratingNumber = PRIORITIES[rating as keyof typeof PRIORITIES] || 0;
 
     const taskData: TaskFormData = {
       title,

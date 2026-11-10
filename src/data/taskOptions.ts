@@ -19,3 +19,9 @@ export const statuses = [
 ];
 
 export const priorities = ["Low", "Medium", "High"];
+
+export const PRIORITIES = {
+  Low: 1,
+  Medium: 2,
+  High: 3,
+};
