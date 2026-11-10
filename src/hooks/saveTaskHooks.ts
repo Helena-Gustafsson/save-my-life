@@ -18,15 +18,9 @@ const useSaveTasks = () => {
     setError(""); // Reset previous errors before initiating a new request
     setMessage(""); // Reset previous messages before initiating a new request
 
-    let ratingNumber = 1; // Low by default
-
-    if (rating === "Medium") {
-      ratingNumber = 2;
-    }
-
-    if (rating === "High") {
-      ratingNumber = 3;
-    }
+    let ratingNumber = 1; // Default is Low
+    if (rating === "Medium") ratingNumber = 2;
+    if (rating === "High") ratingNumber = 3;
 
     const taskData: TaskFormData = {
       title,

@@ -7,7 +7,7 @@
 //notes
 
 import type { Task } from "../types/taskTypes"
-import { capitalize, formatDate } from "../types/Format"
+import { capitalize, formatDate } from "../utils/Format"
 import { Link } from "react-router"
 
 type TaskItemProps = {

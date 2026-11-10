@@ -1,7 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useTask } from "../hooks/useTasksHooks";
-import { capitalize, formatDate } from "../types/Format";
 import NotFoundPage from "./NotFoundPage"; 
+import { capitalize, formatDate } from "../utils/Format";
+import { priorities } from "../data/taskOptions";
 
 const TaskDetailPage = () => {
   const { id } = useParams();
@@ -36,7 +37,9 @@ const TaskDetailPage = () => {
       <p className="task-category"><strong>Category:</strong> {capitalize(task.category || "")}</p>
       <p className="task-deadline"><strong>Deadline:</strong> {formatDate(task.date || "")}</p>
       <p className="task-status"><strong>Status:</strong> {task.status}</p>
-      <p className="task-priority"><strong>Priority:</strong> {task.rating}</p>
+      <p className="task-priority">
+      <strong>Priority:</strong> {priorities[task.rating - 1] || "Low"}
+      </p> 
       <p className="task-notes"><strong>Notes:</strong> {task.notes || "No notes."}</p>
 
       <section className="task-timestamps" style={{ fontSize: "0.8rem", color: "gray" }}>
