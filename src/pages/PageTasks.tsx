@@ -12,7 +12,7 @@ function TasksPage() {
 
   return (
     <section>
-      <h1>Tasks</h1>
+      <h2>Tasks</h2>
 
       <Link to="/tasks/new"> 
         <button className="create-task-btn">Create Task</button>
