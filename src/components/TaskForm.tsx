@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { SubmitEvent } from "react";
 import SelectDropdown from "./SelectDropdown";
 import { categories, statuses, priorities } from "../data/taskOptions";
+import type { Task } from "../types/taskTypes";
 
 type TaskFormProps = {
   addTask: (
@@ -12,30 +13,32 @@ type TaskFormProps = {
     date: string,
     notes: string
   ) => Promise<boolean>;
+  initialData?: Task | null;
 };
 
-const TaskForm = ({addTask}: TaskFormProps) => {
+const TaskForm = ({addTask, initialData}: TaskFormProps) => {
 
-    const [title, setTitle] = useState('')
-    const [category, setCategory] = useState('')
-    const [status, setStatus] = useState('')
-    const [priority, setPriority] = useState('')
-    const [date, setDate] = useState('')
-    const [notes, setNotes] = useState('')
-
+  const [title, setTitle] = useState(initialData ? initialData.title : "");
+  const [category, setCategory] = useState(initialData ? initialData.category : "");
+  const [status, setStatus] = useState(initialData ? initialData.status : "");
+  const [priority, setPriority] = useState(
+    initialData ? priorities[initialData.rating - 1] || "" : ""
+  );
+  const [date, setDate] = useState(initialData && initialData.date ? initialData.date : "");
+  const [notes, setNotes] = useState(initialData ? initialData.notes : "");
     
-    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const isAdded = await addTask(title, category, status, priority, date, notes);
-        if (isAdded) {
-            setTitle('');
-            setCategory('');
-            setStatus('');
-            setPriority('');
-            setDate('');
-            setNotes('');
-        }
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const isAdded = await addTask(title, category, status, priority, date, notes);
+      if (isAdded && !initialData) {
+          setTitle('');
+          setCategory('');
+          setStatus('');
+          setPriority('');
+          setDate('');
+          setNotes('');
       }
+    }
     
   return (
     
@@ -92,7 +95,10 @@ const TaskForm = ({addTask}: TaskFormProps) => {
         />
       </label>
 
-      <button className="task-form-btn" type="submit">Add Task</button>
+      <button className="task-form-btn" type="submit">
+        {initialData?.id ? "Save Changes" : "Add Task"}
+      </button>
+
     </form>
   )
 }

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useTask } from "../hooks/useTasksHooks";
 import NotFoundPage from "./NotFoundPage"; 
-import { capitalize, formatDate } from "../utils/Format";
+import { capitalize, formatDate } from "../utils/format";
 import { priorities } from "../data/taskOptions";
 
 const TaskDetailPage = () => {

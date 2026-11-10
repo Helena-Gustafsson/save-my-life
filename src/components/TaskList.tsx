@@ -1,4 +1,3 @@
-import type { Task } from "../types/taskTypes";
 import TaskItem from "./TaskItem";
 import { useTasks } from "../hooks/useTasksHooks";
 import useSaveTasks from "../hooks/saveTaskHooks";
@@ -11,7 +10,7 @@ type TaskListProps = {
 
 const TaskList = ({ category, status, priority }: TaskListProps) => {
   const { tasks, setTasks, isLoading, error } = useTasks(category, status, priority);
-  const { deleteTask: saveDeleteTask, editTask: saveEditTask, error: saveError, message: saveMessage } = useSaveTasks();
+  const { deleteTask: saveDeleteTask, error: saveError, message: saveMessage } = useSaveTasks();
   
 
 const deleteTask = async (deleteId: string) => {
@@ -22,17 +21,6 @@ const deleteTask = async (deleteId: string) => {
         return true;
     }
     return false;
-  };
-
-  const editTask = async (updatedTask: Task) => {
-    const updatedTaskData = await saveEditTask(updatedTask);
-    
-    if (updatedTaskData) {
-        setTasks (tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
-        return true;
-    }
-    return false;
-    
   };
 
     return (
@@ -46,7 +34,7 @@ const deleteTask = async (deleteId: string) => {
             <ul className="tasks">
             {!isLoading && !error &&
                 tasks.map(task => (
-                <TaskItem key={task.id} task={task} deleteTask={deleteTask} editTask={editTask} />
+                <TaskItem key={task.id} task={task} deleteTask={deleteTask} />
                 ))
             }
             </ul>

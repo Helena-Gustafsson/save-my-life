@@ -7,18 +7,18 @@
 //notes
 
 import type { Task } from "../types/taskTypes"
-import { capitalize, formatDate } from "../utils/Format"
+import { capitalize, formatDate } from "../utils/format"
 import { Link } from "react-router"
 
 type TaskItemProps = {
   task: Task
   deleteTask: (deleteId: string) => void
-  editTask: (task: Task) => void
 }
 
-const TaskItem = ({ task, deleteTask, editTask }: TaskItemProps) => {
+const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
   return (
     <li className="task">
+
       <p className="task-title"><Link to={`/tasks/${task.id}`}><strong>{task.title}</strong></Link></p>
       <p className="task-meta">
         <span className={`tag category-${task.category.toLowerCase().trim()}`}>{capitalize(task.category)}</span>
@@ -27,13 +27,13 @@ const TaskItem = ({ task, deleteTask, editTask }: TaskItemProps) => {
       <p className="task-notes-preview">{task.notes}</p>
 
       <section className="actions">
-        <button className="edit-button" onClick={() => editTask(task)}>Edit</button>
+        <Link to={`/tasks/${task.id}/edit`}>
+          <button className="edit-button">Edit</button>
+        </Link>
         <button className="delete-button" onClick={() => deleteTask(task.id)}>Delete</button>
       </section>
 
     </li>
-
-    
   )
 }
 
