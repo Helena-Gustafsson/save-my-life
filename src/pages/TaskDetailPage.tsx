@@ -43,8 +43,8 @@ const TaskDetailPage = () => {
       <p className="task-notes"><strong>Notes:</strong> {task.notes || "No notes."}</p>
 
       <section className="task-timestamps" style={{ fontSize: "0.8rem", color: "gray" }}>
-        <p>Created: {new Date(task.createdAt).toLocaleString("sv-SE")}</p>
-        <p>Last Updated: {new Date(task.updatedAt).toLocaleString("sv-SE")}</p>
+        <p>Created: {formatDate(task.createdAt || "")}</p>
+        <p>Last Updated: {formatDate(task.updatedAt || "")}</p>
       </section>
 
       <section className="action-buttons">
