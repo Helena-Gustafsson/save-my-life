@@ -16,9 +16,6 @@ Alongside a calm user interface, I put a strong focus on building a **clean and 
 
 ## Tech Stack
 
-
-
-
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=20232A)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=flat&logo=react-router&logoColor=white)
