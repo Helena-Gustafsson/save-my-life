@@ -3,6 +3,8 @@ import type { SubmitEvent } from "react";
 import SelectDropdown from "./SelectDropdown";
 import { categories, statuses, priorities } from "../data/taskOptions";
 import type { Task } from "../types/taskTypes";
+import { useNavigate } from "react-router";
+
 
 type TaskFormProps = {
   addTask: (
@@ -26,7 +28,8 @@ const TaskForm = ({addTask, initialData}: TaskFormProps) => {
   );
   const [date, setDate] = useState(initialData && initialData.date ? initialData.date : "");
   const [notes, setNotes] = useState(initialData ? initialData.notes : "");
-    
+  const navigate = useNavigate();
+  
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
       e.preventDefault();
       const isAdded = await addTask(title, category, status, priority, date, notes);
@@ -95,10 +98,17 @@ const TaskForm = ({addTask, initialData}: TaskFormProps) => {
         />
       </label>
 
-      <button className="task-form-btn" type="submit">
-        {initialData?.id ? "Save Changes" : "Add Task"}
-      </button>
-
+      <div className="action-buttons">
+        <button className="task-form-btn" type="submit">
+          {initialData?.id ? "Save Changes" : "Add Task"}
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="back-button">Back
+        </button>
+      </div>
+      
     </form>
   )
 }
