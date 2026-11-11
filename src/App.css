@@ -82,6 +82,17 @@ label textarea {
   width: calc(100% + 4px);
 }
 
+.form-error {
+  color: #b91c1c;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+}
 
 
 /* ===== Filter Container (Mobile) ===== */
