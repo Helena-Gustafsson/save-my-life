@@ -59,6 +59,7 @@ label {
   gap: 4px;
   font-size: 0.9rem;
   margin-top: 4px;
+  padding-left: 4px;
 }
 
 input,
@@ -72,6 +73,16 @@ button {
   background: white;
   color: inherit;
 }
+
+/*Align Text above input fields (label has padding left 4px)*/
+label input,
+label select,
+label textarea {
+  margin-left: -4px;
+  width: calc(100% + 4px);
+}
+
+
 
 /* ===== Filter Container (Mobile) ===== */
 .filter-container {
