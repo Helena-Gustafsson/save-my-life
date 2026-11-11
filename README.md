@@ -1,4 +1,4 @@
-# Save My Life
+# Save My Life 📝
 
 ## Description
 Save My Life is a personal organizing app built with React and TypeScript. Instead of a game backlog, this app helps me organize my daily life with categories like School, LIA, Career, Home, and Personal tasks. The app connects to an external REST API (Shelf API) to fetch, create, update, and delete tasks.
@@ -15,6 +15,16 @@ In contrast to my more experimental portfolio projects, my main goal here was to
 Alongside a calm user interface, I put a strong focus on building a **clean and scalable folder structure** behind the scenes. By organizing the codebase into dedicated folders (`components`, `pages`, `hooks`, `types`, `data`, and `utils`), every file has a clear responsibility and is easy to find, maintain, and build upon.
 
 ## Tech Stack
+
+
+
+
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=20232A)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=flat&logo=react-router&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+
 * **React** (Component structure and state logic)
 * **TypeScript** (Type safety across components and hooks)
 * **React Router** (Client-side routing, nested layouts, and 404 handling)
