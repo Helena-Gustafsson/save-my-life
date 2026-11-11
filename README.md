@@ -6,6 +6,14 @@ Save My Life is a personal organizing app built with React and TypeScript. Inste
 * **API Handle:** `helena`
 * **Target Grade:** VG
 
+## Idea & Vision
+
+While the underlying structure is inspired by a previous course exercise, **Save My Life** is designed and built to be a real, everyday tool that I actually want and need to use myself. 
+
+In contrast to my more experimental portfolio projects, my main goal here was to keep the interface **clean, neutral, and distraction-free**. For a task manager to work in daily life, it cannot feel overwhelming or cluttered with unnecessary features. Everything is intentionally kept simple, readable, and easy to navigate—making it effortless to open up, filter what needs to be done right now, and get on with my day.
+
+Alongside a calm user interface, I put a strong focus on building a **clean and scalable folder structure** behind the scenes. By organizing the codebase into dedicated folders (`components`, `pages`, `hooks`, `types`, `data`, and `utils`), every file has a clear responsibility and is easy to find, maintain, and build upon.
+
 ## Tech Stack
 * **React** (Component structure and state logic)
 * **TypeScript** (Type safety across components and hooks)
