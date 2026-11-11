@@ -27,9 +27,11 @@ const deleteTask = async (deleteId: string) => {
         <section>
             <h3>TaskList</h3>
 
-            {error && <p style={{color: 'green'}}>Loading tasks...</p>}
-            {saveError && <p style={{color: 'red'}}>Something went wrong: {error}</p>}
-            {saveMessage && <p>{saveMessage}</p>}
+            {isLoading && <p className="loading-message">Loading tasks...</p>}
+            {error && <p className="form-error">Could not load tasks: {error}</p>}
+            {saveError && <p className="form-error">Something went wrong: {saveError}</p>}
+            {saveMessage && <p className="success-message">{saveMessage}</p>}
+
             
             <ul className="tasks">
             {!isLoading && !error &&

@@ -94,12 +94,36 @@ label textarea {
   margin: 4px 0 0 0;
 }
 
-.success-message {
+.success-message,
+.loading-message {
   color: #166534;
   font-weight: bold;
   margin: 0 0 8px 0;
 }
 
+.loading-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Visual Loading spinner */
+
+.loading-message::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid #dcfce7;
+  border-top-color: #166534;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* ===== Filter Container (Mobile) ===== */
 .filter-container {

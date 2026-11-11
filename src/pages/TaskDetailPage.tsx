@@ -25,12 +25,12 @@ const TaskDetailPage = () => {
   }
 
   if (!task) {
-    return <p>Loading task...</p>;
+    return <p className="loading-message">Loading task...</p>;
   }
 
   return (
     <article className="task-details">
-      {isLoading && <p>Loading task details...</p>}
+      {isLoading && <p className="loading-message">Loading task details...</p>}
       
       <h2>{task.title}</h2>
       

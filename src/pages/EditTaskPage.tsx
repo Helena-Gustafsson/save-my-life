@@ -45,8 +45,8 @@ const EditTaskPage = () => {
     return false;
   };
 
-  if (isLoading) return <p>Loading task data...</p>;
-  if (error || !task) return <p className="form-error">{error || "Task not found."}</p>;
+    if (isLoading) return <p className="loading-message">Loading task data...</p>;
+    if (error || !task) return <p className="form-error">{error || "Task not found."}</p>;
 
   return (
     <section>
