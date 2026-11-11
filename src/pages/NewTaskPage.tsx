@@ -28,15 +28,13 @@ const NewTaskPage = () => {
       <h2>Add a New Task</h2>
 
       {error && (
-        <p style={{ color: "red" }}>
+        <p className="form-error">
           {error}
         </p>
       )}
 
       {message && (
-        <p style={{ color: "green" }}>
-          {message}
-        </p>
+        <p className="success-message">{message}</p>
       )}
 
       <TaskForm addTask={handleAddTask} />

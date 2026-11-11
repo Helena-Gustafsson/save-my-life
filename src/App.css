@@ -94,6 +94,12 @@ label textarea {
   margin: 4px 0 0 0;
 }
 
+.success-message {
+  color: #166534;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
 
 /* ===== Filter Container (Mobile) ===== */
 .filter-container {
@@ -113,7 +119,6 @@ label textarea {
     max-width: 100%;
   }
 }
-
 
 textarea {
   resize: vertical;
@@ -252,8 +257,8 @@ button.task-form-btn {
 }
 
 .tag.category-cats {
-  background: #ffedd5;
-  color: #c2410c;
+  background: #f7dfbc;
+  color: #22032e;
 }
 
 .tag.category-home {

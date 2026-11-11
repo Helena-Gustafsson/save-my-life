@@ -46,14 +46,14 @@ const EditTaskPage = () => {
   };
 
   if (isLoading) return <p>Loading task data...</p>;
-  if (error || !task) return <p style={{ color: "red" }}>{error || "Task not found."}</p>;
+  if (error || !task) return <p className="form-error">{error || "Task not found."}</p>;
 
   return (
     <section>
       <h2>Edit Task</h2>
 
-      {saveError && <p style={{ color: "red" }}>{saveError}</p>}
-      {saveMessage && <p style={{ color: "green" }}>{saveMessage}</p>}
+      {saveError && <p className="form-error">{saveError}</p>}
+      {saveMessage && (<p className="success-message">{saveMessage}</p>)}
       
       <TaskForm addTask={handleEditSubmit} initialData={task} />
     </section>
