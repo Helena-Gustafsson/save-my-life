@@ -1,6 +1,8 @@
 import TaskItem from "./TaskItem";
 import { useTasks } from "../hooks/useTasksHooks";
 import useSaveTasks from "../hooks/saveTaskHooks";
+import { useState } from "react";
+
 
 type TaskListProps = {
   category: string;
@@ -10,16 +12,24 @@ type TaskListProps = {
 
 const TaskList = ({ category, status, priority }: TaskListProps) => {
   const { tasks, setTasks, isLoading, error } = useTasks(category, status, priority);
-  const { deleteTask: saveDeleteTask, error: saveError, message: saveMessage } = useSaveTasks();
-  
+  const { deleteTask: saveDeleteTask, error: saveError } = useSaveTasks();
+  const [showSaveError, setShowSaveError] = useState(false);
 
-const deleteTask = async (deleteId: string) => {
-    
-  const deletedTask = await saveDeleteTask(deleteId);
-  if (deletedTask) {
-        setTasks(tasks.filter(task => task.id !== deleteId));
-        return true;
+  const deleteTask = async (deleteId: string) => {
+    setShowSaveError(false);
+    const deletedTask = await saveDeleteTask(deleteId);
+
+    if (deletedTask) {
+      setTimeout(() => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== deleteId));
+      }, 3000);
+      return true;
     }
+
+    setShowSaveError(true);
+    setTimeout(() => {
+      setShowSaveError(false);
+    }, 4000);
     return false;
   };
 
@@ -29,10 +39,8 @@ const deleteTask = async (deleteId: string) => {
 
             {isLoading && <p className="loading-message">Loading tasks...</p>}
             {error && <p className="form-error">Could not load tasks: {error}</p>}
-            {saveError && <p className="form-error">Something went wrong: {saveError}</p>}
-            {saveMessage && <p className="success-message">{saveMessage}</p>}
+            {showSaveError && saveError && (<p className="form-error">Something went wrong: {saveError}</p>)}
 
-            
             <ul className="tasks">
             {!isLoading && !error &&
                 tasks.map(task => (

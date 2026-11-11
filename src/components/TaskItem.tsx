@@ -9,13 +9,24 @@
 import type { Task } from "../types/taskTypes"
 import { capitalize, formatDate } from "../utils/format"
 import { Link } from "react-router"
+import { useState } from "react";
 
 type TaskItemProps = {
   task: Task
-  deleteTask: (deleteId: string) => void
+  deleteTask: (deleteId: string) => Promise<boolean>
 }
 
 const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
+
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleDeleteClick = async () => {
+    const success = await deleteTask(task.id);
+    if (success) {
+      setIsDeleted(true);
+    }
+  };
+
   return (
     <li className="task">
 
@@ -30,8 +41,13 @@ const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
-        <button className="delete-button" onClick={() => deleteTask(task.id)}>Delete</button>
+        <button className="delete-button" 
+          onClick={handleDeleteClick}
+          disabled={isDeleted} 
+          >Delete</button>
       </section>
+
+      {isDeleted && <p className="success-message">Task deleted successfully!</p>}
 
     </li>
   )
