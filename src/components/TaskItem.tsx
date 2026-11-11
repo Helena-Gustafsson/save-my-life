@@ -19,13 +19,17 @@ type TaskItemProps = {
 const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
 
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDeleteClick = async () => {
-    const success = await deleteTask(task.id);
-    if (success) {
-      setIsDeleted(true);
-    }
-  };
+  setIsDeleting(true);
+  const success = await deleteTask(task.id);
+  setIsDeleting(false);
+  if (success) {
+    setIsDeleted(true);
+  }
+};
+
 
   return (
     <li className="task">
@@ -43,10 +47,11 @@ const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
         </Link>
         <button className="delete-button" 
           onClick={handleDeleteClick}
-          disabled={isDeleted} 
+          disabled={isDeleted || isDeleting}
           >Delete</button>
       </section>
 
+      {isDeleting && <p className="loading-message">Deleting task...</p>}
       {isDeleted && <p className="success-message">Task deleted successfully!</p>}
 
     </li>
