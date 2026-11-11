@@ -58,7 +58,7 @@ By separating the data-fetching and business logic from the visual components, t
 ### Installation
 1. Clone the repository from GitHub:
    ```bash
-   git clonehttps://github.com/Helena-Gustafsson/save-my-life
+   git clone https://github.com/Helena-Gustafsson/save-my-life
    ```
 2. Go into the project folder:
    ```bash
