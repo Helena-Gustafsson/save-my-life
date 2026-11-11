@@ -63,11 +63,12 @@ const TaskDetailPage = () => {
       </section>
 
       <section className="action-buttons">
+
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
         <button onClick={handleDelete} className="delete-button">Delete</button>
-        <button onClick={() => navigate(-1)} className="back-button">Back</button>
+        <button onClick={() => navigate("/")} className="back-button">Back to tasks</button>
         
       </section>
     </article>
