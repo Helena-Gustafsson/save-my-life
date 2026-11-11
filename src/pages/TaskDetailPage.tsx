@@ -3,11 +3,24 @@ import { useTask } from "../hooks/useTasksHooks";
 import NotFoundPage from "./NotFoundPage"; 
 import { capitalize, formatDate } from "../utils/format";
 import { priorities } from "../data/taskOptions";
+import useSaveTasks from "../hooks/saveTaskHooks";
+import { useTimedNavigate } from "../hooks/useTimedNavigate";
 
 const TaskDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { task, isLoading, error } = useTask(id);
+  const { deleteTask, error: deleteError, message: deleteMessage } = useSaveTasks();
+  const { timedNavigate } = useTimedNavigate();
+
+  const handleDelete = async () => {
+  if (!task) return;
+
+  const isDeleted = await deleteTask(task.id);
+  if (isDeleted) {
+    timedNavigate("/");
+  }
+};
 
   if (error && (error.includes("not found") || error.includes("404"))) {
     return <NotFoundPage />;
@@ -31,7 +44,9 @@ const TaskDetailPage = () => {
   return (
     <article className="task-details">
       {isLoading && <p className="loading-message">Loading task details...</p>}
-      
+      {deleteError && <p className="form-error">{deleteError}</p>}
+      {deleteMessage && <p className="success-message">{deleteMessage}</p>}
+
       <h2>{task.title}</h2>
       
       <p className="task-category"><strong>Category:</strong> {capitalize(task.category || "")}</p>
@@ -51,7 +66,7 @@ const TaskDetailPage = () => {
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
-        <button className="delete-button">Delete</button>
+        <button onClick={handleDelete} className="delete-button">Delete</button>
         <button onClick={() => navigate(-1)} className="back-button">Back</button>
         
       </section>
