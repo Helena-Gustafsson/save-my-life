@@ -1,14 +1,14 @@
-import { useState } from 'react'
 import SelectDropdown from '../components/SelectDropdown'
 import { categories, statuses, priorities } from '../data/taskOptions'
 import { Link } from 'react-router'
 import TaskList from '../components/TaskList'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 function TasksPage() {
- const [category, setCategory] = useState('') 
- const [status, setStatus] = useState('')
- const [priority, setPriority] = useState('')
- 
+
+  const [category, setCategory] = useLocalStorage('taskFilterCategory', '')
+  const [status, setStatus] = useLocalStorage('taskFilterStatus', '')
+  const [priority, setPriority] = useLocalStorage('taskFilterPriority', '')
 
   return (
     <section>
