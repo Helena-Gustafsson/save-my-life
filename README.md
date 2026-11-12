@@ -35,11 +35,11 @@ Alongside a calm user interface, I put a strong focus on building a **clean and 
 * **View task details** (GET ONE request for a specific task page)
 * **Create tasks** (POST request with live form validation)
 * **Edit tasks** (PATCH request using a reusable, pre-filled form)
-* **Delete tasks** (DELETE request to remove tasks)
+* **Delete tasks**  (DELETE request with reusable confirmation dialog to prevent accidental deletion)
 * **Filter tasks** (Filter the list by category, status, and priority)
 * **Form validation** (Required field checks, live error clearing, and timed error banner)
 * **Timed navigation** (Automatic redirect with feedback messages after saving)
-* **Save filters** (Filters stay active even if you reload the page)
+* **Save filters** (Filters stay active even if you reload the page using LocalStorage)
 
 ---
 
@@ -50,10 +50,22 @@ To keep the code clean, reusable, and easy to maintain, I have moved all API cal
 * `useTask`: Fetches data for one specific task based on its URL ID to display it on the details and edit pages.
 * `useSaveTasks`: Collects all data-mutating API requests (`addTask`, `editTask`, `deleteTask`) along with loading, error, and success message states.
 * `useTimedNavigate`: Handles delayed navigation after a successful save or update, giving the user time to read confirmation messages before redirecting.
-* `useLocalStorage`: A generic custom hook prepared to persist selected filter states in browser storage across page reloads.
+* `useLocalStorage`: Stores all selected filter values in browser storage and restores them automatically when the application reloads.
 
 **Why this structure?**
 By separating the data-fetching and business logic from the visual components, the code follows the Single Responsibility Principle. The components focus purely on rendering the interface and user interactions, while the hooks manage the state and external communication.
+
+---
+
+## Reusable Components
+
+To improve maintainability and avoid duplicated UI code, the application includes reusable components.
+
+* `TaskForm` - Shared by both Create and Edit pages.
+* `SelectDropdown` - Reusable select component used for category, status, and priority selection. It is shared between the task list filters as well as the Create and Edit task forms.
+* `TaskItem` - Displays a task card in the task list.
+* `TaskList` - Renders filtered task collections.
+* `DeleteConfirmation` - Reusable confirmation dialog with customizable messages, cancel/confirm actions, and smooth scrolling support.
 
 ---
 
@@ -63,7 +75,8 @@ By separating the data-fetching and business logic from the visual components, t
 * ✅ **Create Task (POST)** (Done with timed redirect)
 * ✅ **Edit Task (PATCH)** (Done with pre-filled reusable form)
 * ✅ **Form Validation** (Done with live field clearing and timed error message)
-* 🔄 **LocalStorage Filters** (In progress)
+* ✅ **LocalStorage Filters**  (Done and persisting filter selections across page reloads)
+* ✅ **Reusable Components** (TaskForm, SelectDropdown, and DeleteConfirmation with custom messages and smooth scrolling)
 * 🔄 **Deployment on Vercel** (Planned)
 
 ---
