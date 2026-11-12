@@ -7,7 +7,7 @@
 //notes
 
 import type { Task } from "../types/taskTypes"
-import { capitalize, formatDate } from "../utils/format"
+import { capitalize, formatDate } from "../utils/formatUtils"
 import { Link } from "react-router"
 import { useState, useEffect } from "react";
 import DeleteConfirmation from "./DeleteConfirmation";
