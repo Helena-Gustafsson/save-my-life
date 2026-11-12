@@ -10,6 +10,7 @@ import type { Task } from "../types/taskTypes"
 import { capitalize, formatDate } from "../utils/format"
 import { Link } from "react-router"
 import { useState } from "react";
+import DeleteConfirmation from "./DeleteConfirmation";
 
 type TaskItemProps = {
   task: Task
@@ -20,16 +21,19 @@ const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
 
   const [isDeleted, setIsDeleted] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  
   const handleDeleteClick = async () => {
+  setShowDeleteConfirmation(false);
+
   setIsDeleting(true);
   const success = await deleteTask(task.id);
   setIsDeleting(false);
+
   if (success) {
     setIsDeleted(true);
   }
 };
-
 
   return (
     <li className="task">
@@ -45,11 +49,20 @@ const TaskItem = ({ task, deleteTask}: TaskItemProps) => {
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
-        <button className="delete-button" 
-          onClick={handleDeleteClick}
+        <button
+          className="delete-button"
+          onClick={() => setShowDeleteConfirmation(true)}
           disabled={isDeleted || isDeleting}
-          >Delete</button>
+          >Delete
+        </button>
       </section>
+
+      <DeleteConfirmation
+        isOpen={showDeleteConfirmation}
+        message="Are you sure you want to delete this task?"
+        onConfirm={handleDeleteClick}
+        onCancel={() => setShowDeleteConfirmation(false)}
+      />
 
       {isDeleting && <p className="loading-message">Deleting task...</p>}
       {isDeleted && <p className="success-message">Task deleted successfully!</p>}

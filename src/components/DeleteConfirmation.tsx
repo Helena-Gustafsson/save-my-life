@@ -16,13 +16,23 @@ function DeleteConfirmation({
   }
 
   return (
-  <div>
+  <div className="delete-confirmation">
     <p>{message}</p>
 
-    <button onClick={onConfirm}>Delete</button>
-    <button onClick={onCancel}>Cancel</button>
+    <div className="action-buttons">
+      <button
+        className="delete-button"
+        onClick={onConfirm}
+      >
+        Delete
+      </button>
+
+      <button onClick={onCancel}>
+        Cancel
+      </button>
+    </div>
   </div>
-);
+  );
 }
 
 export default DeleteConfirmation;

@@ -5,6 +5,8 @@ import { capitalize, formatDate } from "../utils/format";
 import { priorities } from "../data/taskOptions";
 import useSaveTasks from "../hooks/saveTaskHooks";
 import { useTimedNavigate } from "../hooks/useTimedNavigate";
+import DeleteConfirmation from "../components/DeleteConfirmation";
+import { useState } from "react";
 
 const TaskDetailPage = () => {
   const { id } = useParams();
@@ -12,6 +14,7 @@ const TaskDetailPage = () => {
   const { task, isLoading, error } = useTask(id);
   const { deleteTask, error: deleteError, message: deleteMessage } = useSaveTasks();
   const { timedNavigate } = useTimedNavigate();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const handleDelete = async () => {
   if (!task) return;
@@ -67,10 +70,23 @@ const TaskDetailPage = () => {
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
-        <button onClick={handleDelete} className="delete-button">Delete</button>
+        <button
+          onClick={() => setShowDeleteConfirmation(true)}
+          className="delete-button"
+        >
+          Delete
+        </button>
+
         <button onClick={() => navigate("/")} className="back-button">Back to tasks</button>
-        
+
       </section>
+
+      <DeleteConfirmation
+          isOpen={showDeleteConfirmation}
+          message={`Are you sure you want to delete task: ${task.title}?`}
+          onConfirm={handleDelete}
+          onCancel={() => setShowDeleteConfirmation(false)}
+        />
     </article>
   );
 };

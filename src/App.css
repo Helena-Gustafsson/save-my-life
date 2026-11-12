@@ -193,12 +193,18 @@ button.task-form-btn {
   list-style: none;
 }
 
-.task {
+.task,
+.delete-confirmation {
   background: white;
   border: 1px solid #e7e5e4;
   border-radius: 12px;
   padding: 16px;
-  margin-bottom: 8px;
+}
+
+.delete-confirmation {
+  max-width: 260px;
+  margin-top: 16px;
+  border-radius: 25px;
 }
 
 .task-title {
