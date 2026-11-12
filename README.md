@@ -40,6 +40,7 @@ Alongside a calm user interface, I put a strong focus on building a **clean and 
 * **Form validation** (Required field checks, live error clearing, and timed error banner)
 * **Timed navigation** (Automatic redirect with feedback messages after saving)
 * **Save filters** (Filters stay active even if you reload the page using LocalStorage)
+* **Loading states and user feedback** (Custom loading indicators including a visual loading spinner for task loading and deletion, success messages, timed redirects, and API error handling)
 
 ---
 
