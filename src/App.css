@@ -193,6 +193,10 @@ button.task-form-btn {
   list-style: none;
 }
 
+li.task {
+    margin-bottom: 4px;
+}
+
 .task,
 .delete-confirmation {
   background: white;
@@ -210,6 +214,7 @@ button.task-form-btn {
 .task-title {
   font-size: 1.1rem;
   margin: 0 0 8px;
+  text-transform: uppercase;
 }
 
 .task-title a {

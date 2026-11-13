@@ -33,8 +33,9 @@ const TaskDetailPage = () => {
   if (error) {
     return (
       <>
-        <h2>Could not load task</h2>
-        <p style={{ color: "red" }}>{error}</p>
+        <p className="form-error">
+           Could not load task: {error} . Please check your internet connection or try again later.
+        </p>
         <Link to="/">Back to all tasks</Link>
       </>
     );
@@ -50,7 +51,7 @@ const TaskDetailPage = () => {
       {deleteError && <p className="form-error">{deleteError}</p>}
       {deleteMessage && <p className="success-message">{deleteMessage}</p>}
 
-      <h2>{task.title}</h2>
+      <h2 className="task-title">{task.title}</h2>
       
       <p className="task-category"><strong>Category:</strong> {capitalize(task.category || "")}</p>
       <p className="task-deadline"><strong>Deadline:</strong> {formatDate(task.date || "")}</p>

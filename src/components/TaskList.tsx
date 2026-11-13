@@ -38,7 +38,7 @@ const TaskList = ({ category, status, priority }: TaskListProps) => {
             <h3>TaskList</h3>
 
             {isLoading && <p className="loading-message">Loading tasks...</p>}
-            {error && <p className="form-error">Could not load tasks: {error}</p>}
+            {error && <p className="form-error">Could not load tasks: {error}. Please check your internet connection or try again later.</p>}
             {showSaveError && saveError && (<p className="form-error">Something went wrong: {saveError}</p>)}
 
             <ul className="tasks">
