@@ -78,7 +78,7 @@ To improve maintainability and avoid duplicated UI code, the application include
 * ✅ **Form Validation** (Done with live field clearing and timed error message)
 * ✅ **LocalStorage Filters**  (Done and persisting filter selections across page reloads)
 * ✅ **Reusable Components** (TaskForm, SelectDropdown, and DeleteConfirmation with custom messages and smooth scrolling)
-* 🔄 **Deployment on Vercel** (Planned)
+* ✅ **Deployment on Vercel** (Planned)
 
 ---
 
