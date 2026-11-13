@@ -66,11 +66,13 @@ const TaskDetailPage = () => {
         <p>Last Updated: {formatDate(task.updatedAt || "")}</p>
       </section>
 
+      {!showDeleteConfirmation ? (
       <section className="action-buttons">
 
         <Link to={`/tasks/${task.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
+
         <button
           onClick={() => setShowDeleteConfirmation(true)}
           className="delete-button"
@@ -78,16 +80,30 @@ const TaskDetailPage = () => {
           Delete
         </button>
 
-        <button onClick={() => navigate("/")} className="back-button">Back to tasks</button>
+        <button onClick={() => navigate("/")} className="back-button">
+          Back to tasks
+        </button>
 
       </section>
-
-      <DeleteConfirmation
+      ) : (
+      
+      <div className="task-detail-delete-confirmation">
+        <DeleteConfirmation
           isOpen={showDeleteConfirmation}
           message={`Are you sure you want to delete task: ${task.title}?`}
           onConfirm={handleDelete}
           onCancel={() => setShowDeleteConfirmation(false)}
         />
+
+        {deleteError && (
+          <p className="form-error">{deleteError}</p>
+        )}
+
+        {deleteMessage && (
+          <p className="success-message">{deleteMessage}</p>
+        )}
+      </div>
+      )}
     </article>
   );
 };

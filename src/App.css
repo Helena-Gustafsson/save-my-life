@@ -20,7 +20,7 @@ h2,
 h3 {
  font-family: Georgia, serif;
   color: #490303;
-  margin: 4px 0 12px 0;
+  margin: 4px 4px 12px 0;
 }
 
 h1 {
@@ -211,6 +211,10 @@ li.task {
   border-radius: 25px;
 }
 
+.task-detail-delete-confirmation {
+  margin-left: -10px;
+}
+
 .task-title {
   font-size: 1.1rem;
   margin: 0 0 8px;
@@ -219,6 +223,7 @@ li.task {
 
 .task-title a {
   text-decoration: none;
+  padding-left: 6px;
 }
 
 .task-meta {
