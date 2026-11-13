@@ -23,6 +23,11 @@ h3 {
   margin: 4px 4px 12px 0;
 }
 
+h2,
+h3 {
+  padding-left: 4px;
+}
+
 h1 {
   font-family: "Mystery Quest", system-ui;
   letter-spacing: 2px;
@@ -219,6 +224,7 @@ li.task {
   font-size: 1.1rem;
   margin: 0 0 8px;
   text-transform: uppercase;
+  padding-left: 0;
 }
 
 .task-title a {

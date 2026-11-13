@@ -9,7 +9,7 @@ const RootLayout = () => {
             </nav>
             <div>
                 <h1>Save my Life!</h1>
-                <p>Organize your everyday life</p>
+                <p>...Organize your everyday life...</p>
             </div>
         </header>
 
