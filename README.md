@@ -1,6 +1,6 @@
 # Save My Life 📝
 
-<img width="2468" height="931" alt="Save my life overview" src="https://github.com/user-attachments/assets/029617b0-e573-4e57-8f09-97bfb089d89f" />
+<img width="1636" height="931" alt="Save-my-life-overview" src="https://github.com/user-attachments/assets/7d740e07-7461-49d0-9091-83e430bfaecc" />
 
 ## Description
 Save My Life is a personal organizing app built with React and TypeScript. Instead of a game backlog, this app helps me organize my daily life with categories like School, LIA, Career, Home, and Personal tasks. The app connects to an external REST API (Shelf API) to fetch, create, update, and delete tasks.
@@ -103,3 +103,5 @@ To improve maintainability and avoid duplicated UI code, the application include
    ```bash
    npm run dev
    ```
+
+   <img width="2468" height="931" alt="Save my life overview" src="https://github.com/user-attachments/assets/029617b0-e573-4e57-8f09-97bfb089d89f" />
